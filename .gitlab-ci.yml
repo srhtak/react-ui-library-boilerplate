@@ -59,7 +59,7 @@ run_release:
     - npm run release
     - git add .
     - git commit -m "Release version $(node -p "require('./package.json').version")"
-    - git push gitlab origin --tags
+    - git push --follow-tags gitlab main
   dependencies:
     - build
 
