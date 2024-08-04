@@ -1,4 +1,4 @@
-import { jsxs, jsx } from 'react/jsx-runtime';
+import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import r, { useRef, useDebugValue, createElement, useContext } from 'react';
 
 /******************************************************************************
@@ -930,7 +930,7 @@ const Container = dt.div `
 `;
 
 const Page = ({ title, children }) => {
-    return (jsxs(Container, { "data-testid": "page-container", children: [jsx("h1", { children: title }), children] }));
+    return (jsxs(Container, { "data-testid": "page-container", children: [jsx("h1", { children: title }), jsx(Fragment, { children: children })] }));
 };
 
 export { Page };
