@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import React$1 from 'react';
 
 interface PageProps {
