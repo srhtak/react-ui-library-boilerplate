@@ -1,0 +1,69 @@
+image: node:20
+
+stages:
+  - lint
+  - test
+  - build
+  - release
+  - publish
+
+lint_code:
+  stage: lint
+  script:
+    - npm install
+    - npm run lint:fix
+  artifacts:
+    paths:
+      - node_modules
+      - package-lock.json
+      - package.json
+      - src
+      - .eslintrc.js
+      - .prettierrc.js
+      - .gitignore
+      - .npmignore
+      - .nvmrc
+      - rollup.config.mjs
+      - commitlint.config.js
+      - tsconfig.json
+      - .husky
+
+run_tests:
+  stage: test
+  script:
+    - npm run test
+  dependencies:
+    - lint_code
+
+build:
+  stage: build
+  script:
+    - npm run build
+  dependencies:
+    - run_tests
+
+run_release:
+  stage: release
+  script:
+    - git config --global user.email "$GIT_EMAIL"
+    - git config --global user.name "$GIT_NAME"
+    - npm run release
+    - git push --follow-tags "https://${GH_TOKEN}@github.com/srhtak/react-component-library.git" main
+  dependencies:
+    - build
+
+publish_to_npm:
+  stage: publish
+  script:
+    - CURRENT_VERSION=$(npm show react-component-library version)
+    - LOCAL_VERSION=$(node -pe "require('./package.json').version")
+    - |
+      if [ "$CURRENT_VERSION" != "$LOCAL_VERSION" ]; then
+        echo "Versions are different. Publishing to npm."
+        echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        npm publish
+      else
+        echo "Versions are the same. Skipping npm publish."
+      fi
+  dependencies:
+    - build
