@@ -9,7 +9,9 @@ jobs:
     description: Lint code
     steps:
       - checkout
-      - node/install-packages
+      - node/install-packages:
+          node-version: '20.11.1'
+
       - run:
           name: Install dependencies
           command: npm install
