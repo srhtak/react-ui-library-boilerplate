@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sources":["../../src/index.ts"],"sourcesContent":["export { default as Page } from \"./components/Page\";\n"],"names":[],"mappings":";;;;;AAAA,IAAoD,MAAA,GAAA,OAAA,CAAA,mBAAA,CAAA,CAAA;AAA3C,MAAA,CAAA,cAAA,CAAA,OAAA,EAAA,MAAA,EAAA,EAAA,UAAA,EAAA,IAAA,EAAA,GAAA,EAAA,YAAA,EAAA,OAAA,OAAA,CAAA,eAAA,CAAA,MAAA,CAAA,CAAA,OAAO,CAAQ,EAAA,EAAA,CAAA;;"}
