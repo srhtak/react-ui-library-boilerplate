@@ -1,5 +1,5 @@
 import React, { Children } from "react";
-import { PageProps } from "../types";
+import { PageProps } from "./types";
 
 const Page: React.FC<PageProps> = ({ title, children }) => {
   return (
@@ -9,3 +9,5 @@ const Page: React.FC<PageProps> = ({ title, children }) => {
     </>
   );
 };
+
+export default Page;
