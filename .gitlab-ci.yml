@@ -57,6 +57,7 @@ run_release:
     - git config --global user.email "$GIT_EMAIL"
     - git config --global user.name "$GIT_NAME"
     - npm run release
+    - git add .
     - git commit -m "Release version $(node -p "require('./package.json').version")"
     - git push origin --tags
   dependencies:
