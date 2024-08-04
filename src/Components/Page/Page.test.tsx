@@ -14,4 +14,19 @@ describe("Page", () => {
     expect(titleElement).toBeInTheDocument();
     expect(childrenElement).toBeInTheDocument();
   });
+
+  it("should render correct styling", () => {
+    const title = "Test Title";
+    const children = "Test Children";
+    const { getByTestId } = render(<Page title={title}>{children}</Page>);
+
+    const container = getByTestId("page-container");
+
+    expect(container).toHaveStyle(`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    `);
+  });
 });
