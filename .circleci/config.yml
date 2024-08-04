@@ -9,9 +9,10 @@ jobs:
     description: Lint code
     steps:
       - checkout
-      - node/install-packages:
-          node-version: '20.11.1'
-
+      - node/install-packages
+      - run:
+          name: Check Node.js version
+          command: node -v
       - run:
           name: Install dependencies
           command: npm install
@@ -42,6 +43,9 @@ jobs:
       - attach_workspace:
           at: .
       - run:
+          name: Check Node.js version
+          command: node -v  # Node.js versiyonunu kontrol edin
+      - run:
           name: Run tests
           command: npm run test
   build:
@@ -51,6 +55,9 @@ jobs:
       - attach_workspace:
           at: .
       - run:
+          name: Check Node.js version
+          command: node -v  # Node.js versiyonunu kontrol edin
+      - run:
           name: Build
           command: npm run build
   run_release:
@@ -59,6 +66,9 @@ jobs:
     steps:
       - checkout
       - node/install-packages
+      - run:
+          name: Check Node.js version
+          command: node -v  # Node.js versiyonunu kontrol edin
       - run:
           name: Set up git credentials
           command: |
@@ -75,6 +85,9 @@ jobs:
     steps:
       - checkout
       - node/install-packages
+      - run:
+          name: Check Node.js version
+          command: node -v  # Node.js versiyonunu kontrol edin
       - run:
           name: Check if npm version is the same and publish to npm
           command: |
