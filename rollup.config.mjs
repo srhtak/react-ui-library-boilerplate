@@ -4,6 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import packageJson from "./package.json" assert { type: "json" };
+import plugin from "rollup-plugin-dts";
 
 export default [
   {
@@ -19,6 +20,15 @@ export default [
         format: "es",
         sourcemap: true,
       },
+    ],
+    plugin: [
+      resolve(),
+      commonjs(),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        exclude: ["**/*.test.tsx", "**/*.test.ts", "**/*.stories.ts"],
+      }),
+      postcss({ extensions: [".css"], inject: true, extract: false }),
     ],
   },
 ];
