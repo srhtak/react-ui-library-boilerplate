@@ -7,6 +7,10 @@ stages:
   - release
   - publish
 
+cache:
+  paths:
+    - node_modules/
+
 lint_code:
   stage: lint
   script:
@@ -31,13 +35,18 @@ lint_code:
 run_tests:
   stage: test
   script:
+    - npm ci
     - npm run test
   dependencies:
     - lint_code
+  artifacts:
+    paths:
+      - test-results/
 
 build:
   stage: build
   script:
+    - npm ci
     - npm run build
   dependencies:
     - run_tests
