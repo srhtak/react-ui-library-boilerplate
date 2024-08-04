@@ -57,7 +57,8 @@ run_release:
     - git config --global user.email "$GIT_EMAIL"
     - git config --global user.name "$GIT_NAME"
     - npm run release
-    - git push --follow-tags "https://${GH_TOKEN}@github.com/srhtak/react-component-library.git" main
+    - git commit -m "Release version $(node -p "require('./package.json').version")"
+    - git push origin --tags
   dependencies:
     - build
 
