@@ -32,7 +32,6 @@ export default [
       }),
       postcss({ extensions: [".css"], inject: true, extract: false }),
     ],
-    external: ["react", "react-dom", "react/jsx-runtime"],
   },
   {
     input: "dist/esm/types/index.d.ts",
