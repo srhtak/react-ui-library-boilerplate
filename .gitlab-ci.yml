@@ -58,10 +58,11 @@ run_release:
     - git config --global user.name "$GIT_NAME"
     - npm run release
     - |
+      git remote add gitlab_origin https://oauth2:glpat-GLZtYN-C88skm6Kt96TK@gitlab.com/srhtak/
       git checkout main
       git add .
       git commit -m "feat(release): release version $(node -p "require('./package.json').version")"
-      git push origin main --follow-tags
+      git push gitlab_origin HEAD:main -o ci.skip
   dependencies:
     - build
 
