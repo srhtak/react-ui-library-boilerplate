@@ -1,4 +1,3 @@
-// src/components/Select/select.stories.tsx
 import Select from "./index";
 
 export default {

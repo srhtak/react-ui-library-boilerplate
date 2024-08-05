@@ -1,4 +1,3 @@
-// src/components/Select/index.tsx
 import React from "react";
 import { type SelectProps } from "./types";
 import { SelectContainer, StyledSelect, ErrorMessage } from "./styled";

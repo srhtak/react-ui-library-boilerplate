@@ -2,7 +2,6 @@ import React from "react";
 import { type InputProps } from "./types";
 import { InputContainer, StyledInput, ErrorMessage } from "./styled";
 
-// Input bileşeni
 const Input: React.FC<InputProps> = ({ label, error, ...rest }) => {
   return (
     <InputContainer>
