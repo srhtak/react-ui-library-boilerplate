@@ -1,4 +1,3 @@
-// src/components/Button/styled.ts
 import styled, { css } from "styled-components";
 
 const buttonVariants = {

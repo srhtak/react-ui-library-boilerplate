@@ -1,10 +1,8 @@
-// src/components/Button/index.tsx
 import React from "react";
 import { type ButtonProps } from "./types";
 import { Button as StyledButton } from "./styled";
 import { type ComponentPropsWithoutRef } from "react";
 
-// ButtonProps üzerine ComponentPropsWithoutRef ekleyin.
 type ButtonPropsWithRef = ButtonProps & ComponentPropsWithoutRef<"button">;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonPropsWithRef>(
