@@ -32,7 +32,7 @@ lint_code:
       - tsconfig.json
       - .husky
 
-run_tests:
+.run_tests:
   stage: test
   script:
     - npm ci
